@@ -1,0 +1,131 @@
+{
+  "layer": "top",
+  "modules-left": ["custom/archicon", "clock", "pulseaudio"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": [ "bluetooth", "network", "battery", "custom/vpn"],
+  
+
+ "custom/archicon": {
+    "format": "󰣇",
+    "tooltip": false, 
+    "on-click": "alacritty -e bash -c 'fastfetch; exec bash'"
+},
+
+  "clock": {
+    "format": "{:%d.%m.%Y | %H:%M}"
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% {icon} ",
+    "format-bluetooth":"󰂯",
+    "format-icons": {
+      "headphones": "", 
+      "bluetooth": "󰂯",
+      "default": [""]
+    },
+    "justify": "center", 
+    "on-click": "pavucontrol", 
+    "tooltip-format": "{icon} {volume}%"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "10": "",
+      "11": "",
+      "12": "",
+      "13": "",
+      "14": "",
+      "15": "",
+      "16": "",
+      "17": "",
+      "18": "",
+      "19": "",
+      "20": "",
+
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    }
+  },
+      
+  /*"idle_inhibitor": {
+    "format": "{icon}", 
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+
+  /*"bluetooth": {
+    "format-on": "  " ,
+    "format-off": " 󰂲 ", 
+    "on-click": "rofi-bluetooth",
+
+  },*/
+
+  "bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": "",
+	"format-disabled": "", // an empty format will hide the module
+	"format-connected": " {num_connections} connected",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"on-click": "rofi-bluetooth"
+},
+
+  "network": {
+    "format-wifi": "󰖩",
+    "format-ethernet": "󰈁", 
+    "format-disconnected": "󱚼", 
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  | {ipaddr}",
+    "tooltip-format-ethernet": "{ifname} 🖧 | {ipaddr}",
+    "on-click": "nm-connection-editor"  },
+
+  "battery": {
+    "interval":1,
+        "states": {
+            "good": 95,
+            "warning": 40,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄 ",
+        "format-plugged": "{capacity}% 󰂄 ",
+        "format-alt": "{time} {icon}",
+            "format-icons": [
+          "󰁻",
+          "󰁼",
+          "󰁾",
+          "󰂀",
+          "󰂂",
+          "󰁹"
+        ]
+
+  },
+
+  "custom/vpn": {
+  "format": "  ",
+  "tooltip": "VPN Status",
+  "exec": "bash -c '[ $(ip link show protonvpn 2>/dev/null | grep -c UP) -eq 1 ] && echo ON || echo OFF'",
+  "interval": 10,
+  "on-click": "bash -c '[ $(ip link show protonvpn 2>/dev/null | grep -c UP) -eq 1 ] && sudo wg-quick down protonvpn || sudo wg-quick up protonvpn'",
+  "format-alt": "   " ,
+  "class": "vpn",
+  "on-click-right": "notify-send 'VPN status clicked'"
+}
+
+}

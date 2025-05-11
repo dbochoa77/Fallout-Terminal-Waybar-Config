@@ -1,0 +1,39 @@
+* {
+    border: none;
+    font-size: 12px;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "monospace";
+    min-height: 12px;
+    color: rgba(0,255,0,1.0);
+
+}
+
+window#waybar {
+    background: transparent;
+    margin: 0px;
+}
+
+.modules-left,
+.modules-center, 
+.modules-right {
+    padding: 2px 4px;
+}
+
+#custom-archicon,
+#clock, 
+#pulseaudio, 
+#hyprland-workspaces,
+#bluetooth, 
+#network, 
+#battery, 
+#custom-vpn {
+    padding: 2px 4px;
+}
+
+#custom-vpn {
+    color: rgba(0,255,0,1.0); /* White when connected */
+}
+
+#custom-vpn.gray {
+    color:rgb(88, 158, 60); /* Gray when disconnected */
+}
+
